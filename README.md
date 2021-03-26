@@ -1,24 +1,70 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Colum              | Type   | Options                 |
+| ------------------ | ------ | ----------------------- |
+| first_name         | string | null: false             |
+| family_name        | string | null: false             |
+| first_name_kana    | string | null: false             |
+| family_name_kana   | string | null: false             |
+| nickname           | string | null: false             |
+| email              | string | null: false,unique :true|
+| encrypted_password | string | null: false             |
+| dob                | date   | null: false             |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchase_managements
 
-* Configuration
+## purchase_management テーブル
 
-* Database creation
+| Colum   | Type        | Options                        |
+| ------- | ----------- | ------------------------------ |
+| user    | references  | null: false,foreign_key: true  |
+| item    | references  | null: false,foreign_key: true  |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- belongs_to :item
+- has_one    :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## items テーブル
+| Colum            | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| item_name        | string     | null: false                     |
+| introduction     | text       | null: false                     |
+| category_id      | integer    | null: false                     |
+| condition_id     | integer    | null: false                     |
+| charge_id        | integer    | null: false                     |
+| area_id          | integer    | null: false                     |
+| delivery_time_id | integer    | null: false                     |
+| price            | integer    | null: false                     |
+| user             | references | null: false,foreign_key: true   |
 
-* ...
+
+### Association
+
+- belongs_to :user
+- has_one :purchase_management
+
+
+## purchase
+| Colum              | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| post_code          | string     | null: false                    |//郵便番号
+| area_id            | integer    | null: false                    |//都道府県
+| city               | string     | null: false                    |//市町村
+| house_number       | string     | null: false                    |
+| building           | string     |                                |//建物名
+| phone_number       | string     | null: false                    |
+| purchase_management| references | null: false,foreign_key: true  |
+
+
+
+### Association
+
+- belongs_to :purchase_management
