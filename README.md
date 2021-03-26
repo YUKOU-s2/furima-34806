@@ -41,7 +41,7 @@
 | condition_id     | integer    | null: false                     |
 | charge_id        | integer    | null: false                     |
 | area_id          | integer    | null: false                     |
-| delivery_time    | integer    | null: false                     |
+| delivery_time_id | integer    | null: false                     |
 | price            | integer    | null: false                     |
 | user             | references | null: false,foreign_key: true   |
 
@@ -56,7 +56,7 @@
 | Colum              | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |//郵便番号
-| prefectures_id     | integer    | null: false                    |//都道府県
+| area_id            | integer    | null: false                    |//都道府県
 | city               | string     | null: false                    |//市町村
 | house_number       | string     | null: false                    |
 | building           | string     |                                |//建物名
