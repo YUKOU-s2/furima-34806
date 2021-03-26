@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_management
+- has_many :purchase_managements
 
 ## purchase_management テーブル
 
@@ -26,7 +26,7 @@
 
 ### Association
 
-- has_one    :user
+- belongs_to :user
 - belongs_to :item
 - has_one    :purchase_management
 
@@ -52,16 +52,15 @@
 
 
 ## purchase
-| Colum            | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| post_code        | string     | null: false                    |//郵便番号
-| prefectures_id   | integer    | null: false                    |//都道府県
-| city             | string     | null: false                    |//市町村
-| house_number     | string     | null: false                    |
-| building         | string     |                                |//建物名
-| phone_number     | string     | null: false                    |
-| user             | references | null: false,foreign_key: true  |
-| item             | references | null: false,foreign_key: true  |
+| Colum              | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| post_code          | string     | null: false                    |//郵便番号
+| prefectures_id     | integer    | null: false                    |//都道府県
+| city               | string     | null: false                    |//市町村
+| house_number       | string     | null: false                    |
+| building           | string     |                                |//建物名
+| phone_number       | string     | null: false                    |
+| purchase_management| references | null: false,foreign_key: true  |
 
 
 
