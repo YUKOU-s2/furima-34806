@@ -8,6 +8,7 @@
 | family_name        | string | null: false             |
 | first_name_kana    | string | null: false             |
 | family_name_kana   | string | null: false             |
+| nickname           | string | null: false             |
 | email              | string | null: false,unique :true|
 | encrypted_password | string | null: false             |
 | dob                | date   | null: false             |
@@ -28,7 +29,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one    :purchase_management
+- has_one    :purchase
 
 
 ## items テーブル
