@@ -4,29 +4,31 @@
 
 | Colum              | Type   | Options                 |
 | ------------------ | ------ | ----------------------- |
-| name               | string | null: false             |
-| nickname           | string | null: false             |
-| e-mail             | string | null: false,unique :true|
+| first_name         | string | null: false             |
+| family_name        | string | null: false             |
+| first_name_kana    | string | null: false             |
+| family_name_kana   | string | null: false             |
+| email              | string | null: false,unique :true|
 | encrypted_password | string | null: false             |
 | dob                | date   | null: false             |
 
 ### Association
 
 - has_many :items
-- has_many :users_items
+- has_many :purchase_management
 
-## users_items テーブル
+## purchase_management テーブル
 
 | Colum   | Type        | Options                        |
 | ------- | ----------- | ------------------------------ |
-| user_id | references  | null: false,foreign_key: true  |
-| item_id | references  | null: false,foreign_key: true  |
+| user    | references  | null: false,foreign_key: true  |
+| item    | references  | null: false,foreign_key: true  |
 
 ### Association
 
-- belongs_to :user
+- has_one    :user
 - belongs_to :item
-- belongs_to :purchase
+- has_one    :purchase_management
 
 
 ## items テーブル
@@ -36,17 +38,17 @@
 | introduction     | text       | null: false                     |
 | category_id      | integer    | null: false                     |
 | condition_id     | integer    | null: false                     |
-| charges_id       | integer    | null: false                     |
+| charge_id        | integer    | null: false                     |
 | area_id          | integer    | null: false                     |
-| delivery_time_id | integer    | null: false                     |
+| delivery_time    | integer    | null: false                     |
 | price            | integer    | null: false                     |
-| user_id           |references  | null: false,foreign_key: true  |
+| user             | references | null: false,foreign_key: true   |
 
 
 ### Association
 
 - belongs_to :user
-- has_many :users_items
+- has_one :purchase_management
 
 
 ## purchase
@@ -54,11 +56,15 @@
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |//郵便番号
 | prefectures_id   | integer    | null: false                    |//都道府県
-| house_number     | string     | null: false                    |//市町村
+| city             | string     | null: false                    |//市町村
+| house_number     | string     | null: false                    |
 | building         | string     |                                |//建物名
 | phone_number     | string     | null: false                    |
+| user             | references | null: false,foreign_key: true  |
+| item             | references | null: false,foreign_key: true  |
+
 
 
 ### Association
 
-- has_many :users_items
+- belongs_to :purchase_management
