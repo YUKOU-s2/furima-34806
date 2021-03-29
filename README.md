@@ -9,7 +9,7 @@
 | first_name_kana    | string | null: false             |
 | family_name_kana   | string | null: false             |
 | nickname           | string | null: false             |
-| email              | string | null: false,unique :true|
+| email              | string | null: false,unique:true |
 | encrypted_password | string | null: false             |
 | dob                | date   | null: false             |
 
