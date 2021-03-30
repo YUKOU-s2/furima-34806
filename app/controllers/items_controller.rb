@@ -1,5 +1,14 @@
 class ItemsController < ApplicationController
 
- def index
- end
+  #def index
+  #  @items = User.all
+  #end
+
+  #def new
+  #  @item = User.new
+  #end
+
+  #def destroy
+  #end
+
 end
