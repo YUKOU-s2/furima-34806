@@ -4,12 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
        with_options presence: true do
-         ZENKAKU_REGEXP  = /\A[\p[ぁ-んァ-ヶ一-龥々]\u{30fc}]+\z/
-         validates :first_name, format: { with: ZENKAKU_REGEXP }
-         validates :family_name, format: { with: ZENKAKU_REGEXP }
+        ZENKAKU_REGEXP  = /\A[\p[ぁ-んァ-ヶ一-龥々]\u{30fc}]+\z/
+        with_options format: { with: ZENKAKU_REGEXP } do
+         validates :first_name
+         validates :family_name
+        end
          KATAKANA_REGEXP  = /\A[ァ-ヶー－]+\z/
-         validates :first_name_kana, format: { with: KATAKANA_REGEXP }
-         validates :family_name_kana, format: { with: KATAKANA_REGEXP }
+         with_options format: { with: KATAKANA_REGEXP } do
+         validates :first_name_kana
+         validates :family_name_kana
+         end
          validates :nickname
          validates :dob
        end
