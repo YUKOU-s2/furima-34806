@@ -24,5 +24,5 @@ class User < ApplicationRecord
             format: { with: VALID_PASSWORD_REGEX,
              message: "は半角6以上英文字・数字それぞれ１文字以上含む必要があります"}
 
-  has_many :items
+   has_many :items
 end
