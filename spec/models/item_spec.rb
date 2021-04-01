@@ -98,7 +98,6 @@ RSpec.describe Item, type: :model do
     it 'priceが全角文字は登録できない' do
       @item.price = 'あああ'
       @item.valid?
-      binding.pry
       expect(@item.errors.full_messages).to include "Price is not a number"
     end
     it 'priceが半角英数字混合は登録できない' do
