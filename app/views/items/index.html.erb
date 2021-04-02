@@ -123,7 +123,7 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     
     <ul class='item-lists'>
       <% @items.each do |item| %> 
@@ -143,7 +143,7 @@
             <%= item.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.delivery_time_id %></span>
+            <span><%= item.price %>円<br><%= item.deliveryTime.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -152,7 +152,7 @@
         </div>
       </li>
      <%end%>
-      <% if @items[0] != nil %>
+      <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
