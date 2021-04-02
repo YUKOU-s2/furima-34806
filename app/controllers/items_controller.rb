@@ -26,10 +26,10 @@ class ItemsController < ApplicationController
    end
    
    def destroy
-    item = Item.find(params[:id])
-    if item.destroy
-      render root_path
-    end 
+    #item = Item.find(params[:id])
+   # if item.destroy
+   #   render root_path
+   # end 
    end
 
 
