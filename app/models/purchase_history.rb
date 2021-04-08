@@ -9,6 +9,8 @@ class PurchaseHistory
    validates :area_id
   end
   with_options presence: true do
+   validates :user_id
+   validates :item_id
    validates :token
    validates :city
    validates :phone_number ,length: {is: 11}

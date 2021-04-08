@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :item_find,only: [:index]
-  before_action :move_to_index,only: [:index]
+  before_action :item_find,only: [:index,:create]
+  before_action :move_to_index,only: [:index,:create]
 
   def index
     @purchase_history = PurchaseHistory.new
@@ -30,7 +30,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id 
+    unless current_user.id == @item.user_id && @item.purchase_management.nil?
     redirect_to root_path
    end
   end
