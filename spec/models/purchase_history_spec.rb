@@ -62,5 +62,15 @@ RSpec.describe PurchaseHistory, type: :model do
       @purchase_history.valid?
       expect(@purchase_history.errors.full_messages).to include("Token can't be blank")
     end
+    it "user_idが空では保存ができないこと" do
+      @purchase_history.user_id = nil
+      @purchase_history.valid?
+      expect(@purchase_history.errors.full_messages).to include("User can't be blank")
+    end
+    it "item_idが空では保存ができないこと" do
+      @purchase_history.item_id = nil
+      @purchase_history.valid?
+      expect(@purchase_history.errors.full_messages).to include("Item can't be blank")
   end
+end
 end
