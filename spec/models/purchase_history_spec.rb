@@ -11,6 +11,11 @@ RSpec.describe PurchaseHistory, type: :model do
     it 'すべての情報があれば登録できる' do
       expect(@purchase_history).to be_valid
     end
+    it "buildingが空でも購入ができる" do
+      @purchase_history.building = " "
+      @purchase_history.valid?
+      expect(@purchase_history.errors.full_messages)
+    end
   end
 
   context '内容に問題がある場合' do
@@ -54,7 +59,7 @@ RSpec.describe PurchaseHistory, type: :model do
       @purchase_history.valid?
       expect(@purchase_history.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
     end
-    it "phone_numberが11桁以上では保存ができないこと" do
+    it "phone_numberが12桁以上では保存できないこと" do
       @purchase_history.phone_number = "012345678910"
       @purchase_history.valid?
       expect(@purchase_history.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
