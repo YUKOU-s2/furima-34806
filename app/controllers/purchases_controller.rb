@@ -9,7 +9,6 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_history = PurchaseHistory.new(purchase_history_params)
-    @item = Item.find(params[:item_id])
     if @purchase_history.valid?
       purchase_card
       @purchase_history.save
@@ -30,7 +29,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    unless current_user.id == @item.user_id && @item.purchase_management.nil?
+    if current_user.id == @item.user_id && @item.purchase_management.nil?
     redirect_to root_path
    end
   end
