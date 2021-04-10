@@ -67,3 +67,4 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'payjp'
 gem 'rspec-rails', '~> 4.0.0'
+gem "aws-sdk-s3", require: false
