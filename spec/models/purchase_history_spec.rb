@@ -64,6 +64,11 @@ RSpec.describe PurchaseHistory, type: :model do
       @purchase_history.valid?
       expect(@purchase_history.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
     end
+    it "phone_numberが-有りでは保存できないこと" do
+      @purchase_history.phone_number = "012-345-6789"
+      @purchase_history.valid?
+      expect(@purchase_history.errors.full_messages).to include("Phone number is the wrong length (should be 11 characters)")
+    end
     it "tokenが空では保存ができないこと" do
       @purchase_history.token = nil
       @purchase_history.valid?

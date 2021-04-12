@@ -13,7 +13,7 @@ class PurchaseHistory
    validates :item_id
    validates :token
    validates :city
-   validates :phone_number ,length: {is: 11}
+   validates :phone_number ,length: {is: 11}, numericality: {only_integer: true}
    validates :house_number
   end
   
